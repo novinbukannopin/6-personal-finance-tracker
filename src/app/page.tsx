@@ -4,9 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { columns } from '@/components/finance/columns';
 import { DataTable } from '@/components/finance/data-table';
 import { ChartPieCategory } from '@/components/chart/pie-category';
+import { ChartLineTrend } from '@/components/chart/line-chart-trend';
 
 export default function Page() {
   const [data, setData] = useState(null);
+  const [analyticsPie, setAnalyticsPie] = useState(null);
+  const [trend, setTrend] = useState(null);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,6 +17,20 @@ export default function Page() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        setLoading(false);
+      });
+
+    fetch('/api/v1/analytics')
+      .then((res) => res.json())
+      .then((data) => {
+        setAnalyticsPie(data);
+        setLoading(false);
+      });
+
+    fetch('/api/v1/trend')
+      .then((res) => res.json())
+      .then((data) => {
+        setTrend(data);
         setLoading(false);
       });
   }, []);
@@ -28,8 +45,8 @@ export default function Page() {
         <DataTable columns={columns} data={data} />
       </div>
       <div className={'flex gap-4 pt-4'}>
-        <ChartPieCategory />
-        <ChartPieCategory />
+        <ChartPieCategory chartData={analyticsPie} />
+        <ChartLineTrend />
       </div>
     </div>
   );
