@@ -15,8 +15,8 @@ datasource db {
 }
 
 model Finance {
-  id          String   @id() @default(cuid())
-  date        DateTime
+  id          String @id() @default(cuid())
+  date        String
   description String
   total       String
   category    String
