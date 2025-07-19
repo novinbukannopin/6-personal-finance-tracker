@@ -1,9 +1,21 @@
-version: "3.9"
-
 services:
   app:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=production
+
+  database:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: novin
+      POSTGRES_PASSWORD: sevima
+      POSTGRES_DB: personalfinance
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
