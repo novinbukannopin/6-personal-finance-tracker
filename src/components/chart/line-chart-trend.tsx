@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+
 import {
   ChartConfig,
   ChartContainer,
@@ -20,23 +21,14 @@ import {
 
 export const description = 'A line chart';
 
-const chartData = [
-  { month: 'January', desktop: 186 },
-  { month: 'February', desktop: 305 },
-  { month: 'March', desktop: 237 },
-  { month: 'April', desktop: 73 },
-  { month: 'May', desktop: 209 },
-  { month: 'June', desktop: 214 },
-];
-
 const chartConfig = {
-  desktop: {
-    label: 'Desktop',
+  total: {
+    label: 'Total',
     color: 'var(--chart-1)',
   },
 } satisfies ChartConfig;
 
-export function ChartLineTrend() {
+export function ChartLineTrend({ chartData }: { chartData: any }) {
   return (
     <Card className={''}>
       <CardHeader>
@@ -55,7 +47,7 @@ export function ChartLineTrend() {
           >
             <CartesianGrid vertical={false} />
             <XAxis
-              dataKey="month"
+              dataKey="date"
               tickLine={false}
               axisLine={false}
               tickMargin={8}
@@ -66,7 +58,7 @@ export function ChartLineTrend() {
               content={<ChartTooltipContent hideLabel />}
             />
             <Line
-              dataKey="desktop"
+              dataKey="total"
               type="natural"
               stroke="var(--color-desktop)"
               strokeWidth={2}

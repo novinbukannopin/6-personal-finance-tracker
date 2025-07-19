@@ -51,7 +51,7 @@ export function ChartPieCategory({ chartData }: any) {
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
-            <Pie data={chartData} dataKey="visitors" nameKey="browser" />
+            <Pie data={chartData} dataKey="total" nameKey="category" />
           </PieChart>
         </ChartContainer>
       </CardContent>

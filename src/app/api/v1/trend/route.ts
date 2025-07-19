@@ -13,7 +13,6 @@ export async function GET(req: NextRequest) {
   const chartData = data?.map((item) => ({
     category: item.date,
     total: item._count.total,
-    fill: `var(--color-${item.date})`,
   }));
 
   return NextResponse.json({ chartData });

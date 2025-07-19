@@ -46,7 +46,7 @@ export default function Page() {
       </div>
       <div className={'flex gap-4 pt-4'}>
         <ChartPieCategory chartData={analyticsPie} />
-        <ChartLineTrend />
+        <ChartLineTrend chartData={trend} />
       </div>
     </div>
   );
