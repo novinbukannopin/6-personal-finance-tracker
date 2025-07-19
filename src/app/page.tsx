@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { columns } from '@/components/finance/columns';
 import { DataTable } from '@/components/finance/data-table';
+import { ChartPieCategory } from '@/components/chart/pie-category';
 
 export default function Page() {
   const [data, setData] = useState(null);
@@ -24,7 +25,11 @@ export default function Page() {
     <div className="min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <h1 className={'text-xl pb-2'}>Personal Finance Tracker</h1>
       <div className={'pt-4'}>
-        {data.length > 1 && <DataTable columns={columns} data={data} />}
+        <DataTable columns={columns} data={data} />
+      </div>
+      <div className={'flex gap-4 pt-4'}>
+        <ChartPieCategory />
+        <ChartPieCategory />
       </div>
     </div>
   );
